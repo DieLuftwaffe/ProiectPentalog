@@ -11,7 +11,7 @@ namespace ProiectPentalog.Database.Models
     {
         [Key]
         public int Id { get; set; }
-        
+        [MaxLength(20)]
         public string Name { get; set; }
 
         public DateTime StartDate { get; set; }
