@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using ProiectPentalog.Database;
 using ProiectPentalog.Database.Models;
 using System.Text;
+using ProiectPentalog.ViewModel;
 
 namespace ProiectPentalog.Controllers
 {
@@ -46,7 +47,7 @@ namespace ProiectPentalog.Controllers
             StringBuilder builder = new StringBuilder();
             List<string> listOfHour = new List<string>();
 
-            for (int index_hour = 0; index_hour <= 24; index_hour++)
+            for (int index_hour = 0; index_hour < 24; index_hour++)
             {
                 if(index_hour < 10)
                 {
@@ -61,7 +62,6 @@ namespace ProiectPentalog.Controllers
                     builder.Append(":30");
                     listOfHour.Add(builder.ToString());
                     builder.Clear();
-
                 }
                 else
                 {
@@ -88,16 +88,24 @@ namespace ProiectPentalog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,StartDate,EndDate,RoomId")] Reservation reservation)
+        public ActionResult Create(CreateReservationsVM reservation)
         {
+            Reservation r = new Reservation()
+            {
+                Id = reservation.Id,
+                Name = reservation.Name,
+                StartDate = reservation.StartDate,
+                EndDate = reservation.EndDate,
+                RoomId = reservation.RoomId
+            };
             if (ModelState.IsValid)
             {
-                db.Reservations.Add(reservation);
+                db.Reservations.Add(r);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name", reservation.RoomId);
+            ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name", r.RoomId);
             return View(reservation);
         }
 

@@ -1,7 +1,8 @@
-﻿@model ProiectPentalog.Database.Models.Reservation
+﻿@model ProiectPentalog.ViewModel.CreateReservationsVM
 
 @{
     ViewBag.Title = "Create";
+    SelectList hours = ViewBag.ListOfHours;
 }
 
 <h2>Create</h2>
@@ -40,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RoomId, "RoomId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RoomId, "RoomName", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("RoomId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
@@ -48,10 +49,18 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.RoomId, "Start Hour", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ListOfHours", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("SelectedTime", hours, htmlAttributes: new { @class = "form-control" })
             </div>
-        </div>
+        </div> //TO DO HERE
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomId, "Finish Hour", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SelectedTime", hours, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div> //TO DO HERE
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
