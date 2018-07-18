@@ -11,9 +11,10 @@ namespace ProiectPentalog.Database.Models
         [Key]
         public int Id { get; set; }
 
+		[MaxLength(20)]
         public string Name { get; set; }
-
-        public int Capacity { get; set; }
+		[Range(0,60)]
+		public int Capacity { get; set; }
 
         public virtual List<Reservation> Reservations { get; set; }
     }

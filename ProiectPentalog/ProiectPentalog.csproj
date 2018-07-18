@@ -166,6 +166,14 @@
     <Compile Include="Migrations\201807171127478_InitialCreate.Designer.cs">
       <DependentUpon>201807171127478_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807180905183_Adaugare.cs" />
+    <Compile Include="Migrations\201807180905183_Adaugare.Designer.cs">
+      <DependentUpon>201807180905183_Adaugare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807180924527_Adaugare1.cs" />
+    <Compile Include="Migrations\201807180924527_Adaugare1.Designer.cs">
+      <DependentUpon>201807180924527_Adaugare1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -239,6 +247,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807171127478_InitialCreate.resx">
       <DependentUpon>201807171127478_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807180905183_Adaugare.resx">
+      <DependentUpon>201807180905183_Adaugare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807180924527_Adaugare1.resx">
+      <DependentUpon>201807180924527_Adaugare1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
