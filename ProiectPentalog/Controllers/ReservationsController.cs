@@ -39,10 +39,32 @@ namespace ProiectPentalog.Controllers
             return View(reservation);
         }
 
+        public void getCurrentHour()
+        {
+            //String currentTime = System.DateTime.Now.ToString("yyyy MM dd h:mm:ss tt");
+            String currentHour = System.DateTime.Now.ToString("h");
+            String currentMinut = System.DateTime.Now.ToString("mm");
+            String currentMeridian = System.DateTime.Now.ToString("tt");
+
+            if (currentMeridian.Equals("PM"))
+            {
+                int hour = Int32.Parse(currentHour);
+                hour += 12;
+                currentHour = hour.ToString();
+            }
+
+            if (currentMeridian.Equals("AM"))
+            {
+                currentHour = "0" + currentHour;
+            }
+        }
+
         // GET: Reservations/Create
         public ActionResult Create()
         {
             ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name");
+
+            String currentTime = System.DateTime.Now.ToString("yyyy MM dd h:mm:ss tt");
 
             StringBuilder builder = new StringBuilder();
             List<string> listOfHour = new List<string>();

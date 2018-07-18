@@ -21,5 +21,7 @@ namespace ProiectPentalog.ViewModel
         public int RoomId { get; set; }
 
         public String SelectedTime { get; set; }
+
+        //public String SelectedTime { get; set; }
     }
 }
