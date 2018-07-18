@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProiectPentalog.Database;
 using ProiectPentalog.Database.Models;
+using System.Text;
 
 namespace ProiectPentalog.Controllers
 {
@@ -41,6 +42,44 @@ namespace ProiectPentalog.Controllers
         public ActionResult Create()
         {
             ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name");
+
+            StringBuilder builder = new StringBuilder();
+            List<string> listOfHour = new List<string>();
+
+            for (int index_hour = 0; index_hour <= 24; index_hour++)
+            {
+                if(index_hour < 10)
+                {
+                    builder.Append("0");
+                    builder.Append(index_hour);
+                    builder.Append(":00");
+                    listOfHour.Add(builder.ToString());
+                    builder.Clear();
+
+                    builder.Append("0");
+                    builder.Append(index_hour);
+                    builder.Append(":30");
+                    listOfHour.Add(builder.ToString());
+                    builder.Clear();
+
+                }
+                else
+                {
+                    builder.Append(index_hour);
+                    builder.Append(":00");
+                    listOfHour.Add(builder.ToString());
+                    builder.Clear();
+
+                    builder.Append(index_hour);
+                    builder.Append(":30");
+                    listOfHour.Add(builder.ToString());
+                    builder.Clear();
+                }
+
+            }
+
+            ViewBag.ListOfHours = new SelectList(listOfHour);
+
             return View();
         }
 
