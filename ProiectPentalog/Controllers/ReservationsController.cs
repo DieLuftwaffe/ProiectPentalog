@@ -65,6 +65,16 @@ namespace ProiectPentalog.Controllers
             return Int32.Parse(currentHour);
         }
 
+        private int getHour(String dateTime)
+        {
+            return Int32.Parse(dateTime.Substring(0, 2));
+        }
+
+        private int getMinute(String dateTime)
+        {
+            return Int32.Parse(dateTime.Substring(3, 2));
+        }
+
         private int getCurrentMinute()
         {
             String currentMinute = System.DateTime.Now.Minute.ToString();
@@ -79,7 +89,9 @@ namespace ProiectPentalog.Controllers
             String currentTime = System.DateTime.Now.ToString("yyyy MM dd h:mm:ss tt");
 
             StringBuilder builder = new StringBuilder();
-            List<string> listOfHour = new List<string>();
+
+            List<string> listOfStartHour = new List<string>();
+            List<string> listOfEndHour = new List<string>();
 
             int actualHourVal = getCurrentHour(); // 
             int actualMinuteVal = getCurrentMinute(); //
@@ -93,14 +105,14 @@ namespace ProiectPentalog.Controllers
                         builder.Append("0");
                         builder.Append(index_hour);
                         builder.Append(":30");
-                        listOfHour.Add(builder.ToString());
+                        listOfStartHour.Add(builder.ToString());
                         builder.Clear();
                     }
                     else
                     {
                         builder.Append(index_hour);
                         builder.Append(":30");
-                        listOfHour.Add(builder.ToString());
+                        listOfStartHour.Add(builder.ToString());
                         builder.Clear();
                     }
                 }
@@ -117,31 +129,37 @@ namespace ProiectPentalog.Controllers
                         builder.Append("0");
                         builder.Append(index_hour);
                         builder.Append(":00");
-                        listOfHour.Add(builder.ToString());
+                        listOfStartHour.Add(builder.ToString());
                         builder.Clear();
 
                         builder.Append("0");
                         builder.Append(index_hour);
                         builder.Append(":30");
-                        listOfHour.Add(builder.ToString());
+                        listOfStartHour.Add(builder.ToString());
                         builder.Clear();
                     }
                     else
                     {
                         builder.Append(index_hour);
                         builder.Append(":00");
-                        listOfHour.Add(builder.ToString());
+                        listOfStartHour.Add(builder.ToString());
                         builder.Clear();
 
                         builder.Append(index_hour);
                         builder.Append(":30");
-                        listOfHour.Add(builder.ToString());
+                        listOfStartHour.Add(builder.ToString());
                         builder.Clear();
                     }
                 }
             }
 
-            ViewBag.ListOfHours = new SelectList(listOfHour);
+            for (int i = 1; i < listOfStartHour.Count; i++)
+            {
+                listOfEndHour.Add(listOfStartHour[i]);
+            }
+
+            ViewBag.ListOfStartHours = new SelectList(listOfStartHour);
+            ViewBag.ListOfEndHours = new SelectList(listOfEndHour);
 
             return View();
         }
@@ -158,10 +176,12 @@ namespace ProiectPentalog.Controllers
                 Id = reservation.Id,
                 Name = reservation.Name,
                 RoomId = reservation.RoomId,
-                
             };
 
-            //r.StartDate = new DateTime
+            {
+                r.StartDate = new DateTime(reservation.ReservationDate.Year, reservation.ReservationDate.Month, reservation.ReservationDate.Day, getHour(reservation.StartHour), getMinute(reservation.StartHour), 0);
+                r.EndDate = new DateTime(reservation.ReservationDate.Year, reservation.ReservationDate.Month, reservation.ReservationDate.Day, getHour(reservation.EndHour), getMinute(reservation.EndHour), 0);
+            }
 
             if (ModelState.IsValid)
             {
