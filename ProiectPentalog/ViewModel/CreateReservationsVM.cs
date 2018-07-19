@@ -14,14 +14,12 @@ namespace ProiectPentalog.ViewModel
         [MaxLength(20)]
         public string Name { get; set; }
 
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndDate { get; set; }
+        public DateTime ReservationDate { get; set; }
 
         public int RoomId { get; set; }
 
-        public String SelectedTime { get; set; }
+        public String StartHour { get; set; } //
 
-        //public String SelectedTime { get; set; }
+        public String EndHour { get; set; } //
     }
 }

@@ -39,11 +39,11 @@ namespace ProiectPentalog.Controllers
             return View(reservation);
         }
 
-        public void getCurrentHour()
+        private void formatDateString ()
         {
             //String currentTime = System.DateTime.Now.ToString("yyyy MM dd h:mm:ss tt");
-            String currentHour = System.DateTime.Now.ToString("h");
-            String currentMinut = System.DateTime.Now.ToString("mm");
+            String currentHour = DateTime.Now.Hour.ToString();
+            String currentMinut = DateTime.Now.Minute.ToString();
             String currentMeridian = System.DateTime.Now.ToString("tt");
 
             if (currentMeridian.Equals("PM"))
@@ -59,6 +59,18 @@ namespace ProiectPentalog.Controllers
             }
         }
 
+        private int getCurrentHour()
+        {
+            String currentHour = System.DateTime.Now.Hour.ToString();
+            return Int32.Parse(currentHour);
+        }
+
+        private int getCurrentMinute()
+        {
+            String currentMinute = System.DateTime.Now.Minute.ToString();
+            return Int32.Parse(currentMinute);
+        }
+
         // GET: Reservations/Create
         public ActionResult Create()
         {
@@ -69,35 +81,64 @@ namespace ProiectPentalog.Controllers
             StringBuilder builder = new StringBuilder();
             List<string> listOfHour = new List<string>();
 
-            for (int index_hour = 0; index_hour < 24; index_hour++)
+            int actualHourVal = getCurrentHour(); // 
+            int actualMinuteVal = getCurrentMinute(); //
+
+            for (int index_hour = actualHourVal; index_hour < 24; index_hour++) //TO DO HERE
             {
-                if(index_hour < 10)
+                if(index_hour == actualHourVal && actualMinuteVal < 30)
                 {
-                    builder.Append("0");
-                    builder.Append(index_hour);
-                    builder.Append(":00");
-                    listOfHour.Add(builder.ToString());
-                    builder.Clear();
-
-                    builder.Append("0");
-                    builder.Append(index_hour);
-                    builder.Append(":30");
-                    listOfHour.Add(builder.ToString());
-                    builder.Clear();
+                    if (index_hour < 10)
+                    {
+                        builder.Append("0");
+                        builder.Append(index_hour);
+                        builder.Append(":30");
+                        listOfHour.Add(builder.ToString());
+                        builder.Clear();
+                    }
+                    else
+                    {
+                        builder.Append(index_hour);
+                        builder.Append(":30");
+                        listOfHour.Add(builder.ToString());
+                        builder.Clear();
+                    }
                 }
-                else
+               
+                if(index_hour == actualHourVal && actualMinuteVal >= 30)
                 {
-                    builder.Append(index_hour);
-                    builder.Append(":00");
-                    listOfHour.Add(builder.ToString());
-                    builder.Clear();
-
-                    builder.Append(index_hour);
-                    builder.Append(":30");
-                    listOfHour.Add(builder.ToString());
-                    builder.Clear();
+                    // To Do Here
                 }
+                
+                if(index_hour != actualHourVal)
+                {
+                    if(index_hour < 10)
+                    {
+                        builder.Append("0");
+                        builder.Append(index_hour);
+                        builder.Append(":00");
+                        listOfHour.Add(builder.ToString());
+                        builder.Clear();
 
+                        builder.Append("0");
+                        builder.Append(index_hour);
+                        builder.Append(":30");
+                        listOfHour.Add(builder.ToString());
+                        builder.Clear();
+                    }
+                    else
+                    {
+                        builder.Append(index_hour);
+                        builder.Append(":00");
+                        listOfHour.Add(builder.ToString());
+                        builder.Clear();
+
+                        builder.Append(index_hour);
+                        builder.Append(":30");
+                        listOfHour.Add(builder.ToString());
+                        builder.Clear();
+                    }
+                }
             }
 
             ViewBag.ListOfHours = new SelectList(listOfHour);
@@ -116,10 +157,12 @@ namespace ProiectPentalog.Controllers
             {
                 Id = reservation.Id,
                 Name = reservation.Name,
-                StartDate = reservation.StartDate,
-                EndDate = reservation.EndDate,
-                RoomId = reservation.RoomId
+                RoomId = reservation.RoomId,
+                
             };
+
+            //r.StartDate = new DateTime
+
             if (ModelState.IsValid)
             {
                 db.Reservations.Add(r);
