@@ -213,55 +213,132 @@ namespace ProiectPentalog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateReservationsVM reservation)
         {
-            Reservation r = new Reservation()
+            //Validari
+            if (reservation.Name == null)
             {
-                Id = reservation.Id,
-                Name = reservation.Name,
-                RoomId = reservation.RoomId,
-            };
-
-            {
-                r.StartDate = new DateTime(reservation.ReservationDate.Year, reservation.ReservationDate.Month, reservation.ReservationDate.Day, getHour(reservation.StartHour), getMinute(reservation.StartHour), 0);
-                r.EndDate = new DateTime(reservation.ReservationDate.Year, reservation.ReservationDate.Month, reservation.ReservationDate.Day, getHour(reservation.EndHour), getMinute(reservation.EndHour), 0);
+                ModelState.AddModelError("Name", "Enter name!");
             }
+
+            if (reservation.RoomId <= 0)
+            {
+                ModelState.AddModelError("RoomId", "Select room name!");
+            }
+
+            DateTime currentDateTime = System.DateTime.Now.Date;
+
+            if (reservation.ReservationDate < currentDateTime)
+            {
+                ModelState.AddModelError("ReservationDate", "Wrong date!");
+            }
+
+            if (reservation.StartHour == null && reservation.EndHour == null)
+            {
+                ModelState.AddModelError("", "Enter Hours!");
+            }
+            else
+            {
+                int isDifferentHours = reservation.StartHour.CompareTo(reservation.EndHour);
+
+                if (isDifferentHours == 1)
+                {
+                    ModelState.AddModelError("EndHour", "The last Last Hour cannot be less then Start Hour!");
+                }
+            }
+
 
             if (ModelState.IsValid)
             {
+                Reservation r = new Reservation()
+                {
+                    Id = reservation.Id,
+                    Name = reservation.Name,
+                    RoomId = reservation.RoomId,
+                };
+
+                r.StartDate = new DateTime(reservation.ReservationDate.Year, reservation.ReservationDate.Month, reservation.ReservationDate.Day, getHour(reservation.StartHour), getMinute(reservation.StartHour), 0);
+                r.EndDate = new DateTime(reservation.ReservationDate.Year, reservation.ReservationDate.Month, reservation.ReservationDate.Day, getHour(reservation.EndHour), getMinute(reservation.EndHour), 0);
+               
                 db.Reservations.Add(r);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-            // aici incep
 
-            //String currentTime = System.DateTime.Now.ToString("yyyy MM dd h:mm:ss tt");
-
-            //StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new StringBuilder();
 
             //List<string> listOfHours = new List<string>(getListOfHours()); // initializare lista bruta
-            //List<string> listOfStartHour = new List<string>();
-            //List<string> listOfEndHour = new List<string>();
+            List<string> listOfStartHour = new List<string>();
+            List<string> listOfEndHour = new List<string>();
 
+            int actualHourVal = getCurrentHour(); // 
+            int actualMinuteVal = getCurrentMinute(); //
 
-            //for (int index = 0; index < listOfHours.Count; index++)
-            //{
-            //    //if (System.DateTime.Now.Day == reservation.)
-            //}
-
-
-            int isDifferentHours = reservation.StartHour.CompareTo(reservation.EndHour);
-
-            if (isDifferentHours == -1)
+            for (int index_hour = actualHourVal; index_hour < 24; index_hour++) //TO DO HERE
             {
-                ModelState.AddModelError("StartHour", "Error message for User");
+                if (index_hour == actualHourVal && actualMinuteVal < 30)
+                {
+                    if (index_hour < 10)
+                    {
+                        builder.Append("0");
+                        builder.Append(index_hour);
+                        builder.Append(":30");
+                        listOfStartHour.Add(builder.ToString());
+                        builder.Clear();
+                    }
+                    else
+                    {
+                        builder.Append(index_hour);
+                        builder.Append(":30");
+                        listOfStartHour.Add(builder.ToString());
+                        builder.Clear();
+                    }
+                }
+
+                if (index_hour == actualHourVal && actualMinuteVal >= 30)
+                {
+                    // To Do Here
+                }
+
+                if (index_hour != actualHourVal)
+                {
+                    if (index_hour < 10)
+                    {
+                        builder.Append("0");
+                        builder.Append(index_hour);
+                        builder.Append(":00");
+                        listOfStartHour.Add(builder.ToString());
+                        builder.Clear();
+
+                        builder.Append("0");
+                        builder.Append(index_hour);
+                        builder.Append(":30");
+                        listOfStartHour.Add(builder.ToString());
+                        builder.Clear();
+                    }
+                    else
+                    {
+                        builder.Append(index_hour);
+                        builder.Append(":00");
+                        listOfStartHour.Add(builder.ToString());
+                        builder.Clear();
+
+                        builder.Append(index_hour);
+                        builder.Append(":30");
+                        listOfStartHour.Add(builder.ToString());
+                        builder.Clear();
+                    }
+                }
             }
 
+            for (int i = 1; i < listOfStartHour.Count; i++)
+            {
+                listOfEndHour.Add(listOfStartHour[i]);
+            }
 
+            ViewBag.ListOfStartHours = new SelectList(listOfStartHour);
+            ViewBag.ListOfEndHours = new SelectList(listOfEndHour);
 
-
-
-  
-            // aici termin
-            ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name", r.RoomId);
+            ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name", reservation.RoomId);
             return View(reservation);
         }
 

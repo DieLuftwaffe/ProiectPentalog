@@ -46,7 +46,7 @@
             @Html.LabelFor(model => model.StartHour, "Start Hour", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("StartHour", startHours, "-- Select --", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.StartHour)
+                @Html.ValidationMessageFor(model => model.StartHour, "", new { @class = "text-danger" })
             </div>
         </div> @*TO DO HERE*@
 
@@ -54,7 +54,7 @@
             @Html.LabelFor(model => model.EndHour, "End Hour", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("EndHour", endHours, "-- Select --", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.EndHour)
+                @Html.ValidationMessageFor(model => model.EndHour, "", new { @class = "text-danger" })
             </div>
         </div> @*TO DO HERE*@
 
