@@ -14,6 +14,7 @@ namespace ProiectPentalog.ViewModel
         [MaxLength(20)]
         public string Name { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime ReservationDate { get; set; }
 
         public int RoomId { get; set; }

@@ -81,15 +81,53 @@ namespace ProiectPentalog.Controllers
             return Int32.Parse(currentMinute);
         }
 
+        private List<String> getListOfHours()
+        {
+            List<String> listOfHours = new List<string>();
+
+            StringBuilder builder = new StringBuilder();
+
+            for (int index_hour = 0; index_hour < 24; index_hour++) //TO DO HERE
+            {
+                if (index_hour < 10)
+                {
+                    builder.Append("0");
+                    builder.Append(index_hour);
+                    builder.Append(":00");
+                    listOfHours.Add(builder.ToString());
+                    builder.Clear();
+
+                    builder.Append("0");
+                    builder.Append(index_hour);
+                    builder.Append(":30");
+                    listOfHours.Add(builder.ToString());
+                    builder.Clear();
+                }
+                else
+                {
+                    builder.Append(index_hour);
+                    builder.Append(":00");
+                    listOfHours.Add(builder.ToString());
+                    builder.Clear();
+
+                    builder.Append(index_hour);
+                    builder.Append(":30");
+                    listOfHours.Add(builder.ToString());
+                    builder.Clear();
+                }
+            }
+
+            return listOfHours;
+        }
+
         // GET: Reservations/Create
         public ActionResult Create()
         {
             ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name");
 
-            String currentTime = System.DateTime.Now.ToString("yyyy MM dd h:mm:ss tt");
-
             StringBuilder builder = new StringBuilder();
 
+            //List<string> listOfHours = new List<string>(getListOfHours()); // initializare lista bruta
             List<string> listOfStartHour = new List<string>();
             List<string> listOfEndHour = new List<string>();
 
@@ -160,8 +198,12 @@ namespace ProiectPentalog.Controllers
 
             ViewBag.ListOfStartHours = new SelectList(listOfStartHour);
             ViewBag.ListOfEndHours = new SelectList(listOfEndHour);
+            
 
-            return View();
+            CreateReservationsVM rez = new CreateReservationsVM();
+            rez.ReservationDate = System.DateTime.Now;
+
+            return View(rez);
         }
 
         // POST: Reservations/Create
@@ -189,7 +231,36 @@ namespace ProiectPentalog.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            // aici incep
 
+            //String currentTime = System.DateTime.Now.ToString("yyyy MM dd h:mm:ss tt");
+
+            //StringBuilder builder = new StringBuilder();
+
+            //List<string> listOfHours = new List<string>(getListOfHours()); // initializare lista bruta
+            //List<string> listOfStartHour = new List<string>();
+            //List<string> listOfEndHour = new List<string>();
+
+
+            //for (int index = 0; index < listOfHours.Count; index++)
+            //{
+            //    //if (System.DateTime.Now.Day == reservation.)
+            //}
+
+
+            int isDifferentHours = reservation.StartHour.CompareTo(reservation.EndHour);
+
+            if (isDifferentHours == -1)
+            {
+                ModelState.AddModelError("StartHour", "Error message for User");
+            }
+
+
+
+
+
+  
+            // aici termin
             ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name", r.RoomId);
             return View(reservation);
         }
