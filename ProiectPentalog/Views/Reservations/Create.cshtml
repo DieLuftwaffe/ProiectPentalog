@@ -1,7 +1,9 @@
-﻿@model ProiectPentalog.Database.Models.Reservation
+﻿@model ProiectPentalog.ViewModel.CreateReservationsVM
 
 @{
     ViewBag.Title = "Create";
+    SelectList startHours = ViewBag.ListOfStartHours;
+    SelectList endHours = ViewBag.ListOfEndHours;
 }
 
 <h2>Create</h2>
@@ -15,6 +17,7 @@
         <h4>Reservation</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -24,28 +27,36 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RoomId, "Room Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "datepicker" } })
-                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "datepicker" } })
-                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RoomId, "RoomId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("RoomId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("RoomId", null, "-- Select --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReservationDate, "Reservation Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReservationDate, new { htmlAttributes = new { @class = "datepicker" } })
+                @Html.ValidationMessageFor(model => model.ReservationDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartHour, "Start Hour", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("StartHour", startHours, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StartHour, "", new { @class = "text-danger" })
+            </div>
+        </div> @*TO DO HERE*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndHour, "End Hour", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("EndHour", endHours, "-- Select --", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EndHour, "", new { @class = "text-danger" })
+            </div>
+        </div> @*TO DO HERE*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -62,12 +73,13 @@
 @section Scripts {
 
 <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script>
         $(function () {
             $(".datepicker").datepicker();
         });
     </script>
-    @Scripts.Render("~/bundles/jqueryval")
 }
-    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-    
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
