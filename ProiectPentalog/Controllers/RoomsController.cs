@@ -116,7 +116,21 @@ namespace ProiectPentalog.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+		// POST: Rooms/Reservations/5
+
+		public ActionResult RoomReservations(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			var reservations = db.Reservations.Include(r => r.Room).Where(i => i.RoomId == id);
+
+			return View(reservations.ToList());
+		}
+
+
+		protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
