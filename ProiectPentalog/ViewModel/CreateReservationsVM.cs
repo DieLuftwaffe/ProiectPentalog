@@ -19,8 +19,8 @@ namespace ProiectPentalog.ViewModel
 
         public int RoomId { get; set; }
 
-        public String StartHour { get; set; } //
+        public String StartHour { get; set; }
 
-        public String EndHour { get; set; } //
+        public String EndHour { get; set; }
     }
 }
