@@ -123,6 +123,11 @@ namespace ProiectPentalog.Controllers
                 }
             }
 
+            if (reservation.StartHour.CompareTo(reservation.EndHour) == 0)
+            {
+                ModelState.AddModelError("", "Choose different hours!");
+            }
+
             if (reservation.StartHour == null && reservation.EndHour == null)
             {
                 ModelState.AddModelError("StartHour", "Enter Hours!");
