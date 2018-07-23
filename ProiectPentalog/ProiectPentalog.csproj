@@ -228,15 +228,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-<<<<<<< HEAD
     <Content Include="image\AlexPopa.jpg" />
     <Content Include="image\AlexVaja.jpg" />
     <Content Include="image\ElenaDobre.jpg" />
     <Content Include="image\LaurențiuPopoacă.jpg" />
     <Content Include="image\LucianBolboros.jpg" />
-=======
     <Content Include="Images\a.jpg" />
->>>>>>> Combobox
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
