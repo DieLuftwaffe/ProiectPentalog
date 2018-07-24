@@ -15,12 +15,27 @@ namespace ProiectPentalog.Controllers
     {
         private RoomsDbContext db = new RoomsDbContext();
 
-        // GET: Reservations
-        public ActionResult Index()
-        {
-            var reservations = db.Reservations.Include(r => r.Room);
-            return View(reservations.ToList());
-        }
+		// GET: Reservations
+
+		public ActionResult Index(int? id)
+		{
+			if (id == null)
+
+			{
+				var reservations = db.Reservations.Include(r => r.Room);
+
+				return View(reservations.ToList());
+			}
+			else
+			{
+				var reservations = db.Reservations.Include(r => r.Room).Where(i => i.RoomId == id);
+
+				return View(reservations.ToList());
+
+			}
+
+
+		}
 
         // GET: Reservations/Details/5
         public ActionResult Details(int? id)
