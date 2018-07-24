@@ -1,0 +1,9 @@
+diff a/ProiectPentalog/Controllers/ReservationsController.cs b/ProiectPentalog/Controllers/ReservationsController.cs	(rejected hunks)
+@@ -128,6 +128,7 @@
+ 
+             if (reservation.ReservationDate == currentDateTime)
+             {
++                if (getHour(reservation.StartHour).CompareTo(currentDateTime.Hour) == -1)
+                 {
+                     ModelState.AddModelError("StartHour", "Wrong Hours!");
+                 }
