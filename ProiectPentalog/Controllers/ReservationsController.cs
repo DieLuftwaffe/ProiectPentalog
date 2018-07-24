@@ -57,8 +57,8 @@ namespace ProiectPentalog.Controllers
             CreateReservationsVM rez = new CreateReservationsVM();
             rez.ReservationDate = System.DateTime.Now;
 
-            int actualHourVal = getCurrentHour();
-            int actualMinuteVal = getCurrentMinute();
+            int actualHourVal = GetCurrentHour();
+            int actualMinuteVal = GetCurrentMinute();
 
             List<string> listOfHours = new List<string>();
             List<string> listOfStartHour = new List<string>();
@@ -66,18 +66,18 @@ namespace ProiectPentalog.Controllers
 
             if (rez.ReservationDate.Date == System.DateTime.Now.Date)
             {
-                listOfHours = getListOfHours(actualHourVal, actualMinuteVal);
+                listOfHours = GetListOfHours(actualHourVal, actualMinuteVal);
             }
             else
             {
-                listOfHours = getListOfHours(0, 59);
+                listOfHours = GetListOfHours(0, 59);
             }
 
             listOfStartHour = listOfHours;
             rez.StartHour = listOfStartHour[0];
             listOfStartHour.Clear();
-            listOfStartHour = getListOfHours(0, 0);
-            listOfEndHour = getListOfHours(0, 0);
+            listOfStartHour = GetListOfHours(0, 0);
+            listOfEndHour = GetListOfHours(0, 0);
 
             ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name");
             ViewBag.ListOfStartHours = new SelectList(listOfStartHour);
@@ -128,7 +128,7 @@ namespace ProiectPentalog.Controllers
 
             if (reservation.ReservationDate == currentDateTime)
             {
-                if (getHour(reservation.StartHour).CompareTo(currentDateTime.Hour) == 1)
+                if (GetHour(reservation.StartHour).CompareTo(currentDateTime.Hour) == 1)
                 {
                     ModelState.AddModelError("StartHour", "Wrong Hours!");
                 }
@@ -163,8 +163,8 @@ namespace ProiectPentalog.Controllers
                     RoomId = reservation.RoomId,
                 };
 
-                r.StartDate = new DateTime(reservation.ReservationDate.Year, reservation.ReservationDate.Month, reservation.ReservationDate.Day, getHour(reservation.StartHour), getMinute(reservation.StartHour), 0);
-                r.EndDate = new DateTime(reservation.ReservationDate.Year, reservation.ReservationDate.Month, reservation.ReservationDate.Day, getHour(reservation.EndHour), getMinute(reservation.EndHour), 0);
+                r.StartDate = new DateTime(reservation.ReservationDate.Year, reservation.ReservationDate.Month, reservation.ReservationDate.Day, GetHour(reservation.StartHour), GetMinute(reservation.StartHour), 0);
+                r.EndDate = new DateTime(reservation.ReservationDate.Year, reservation.ReservationDate.Month, reservation.ReservationDate.Day, GetHour(reservation.EndHour), GetMinute(reservation.EndHour), 0);
                
                 db.Reservations.Add(r);
                 db.SaveChanges();
@@ -172,8 +172,8 @@ namespace ProiectPentalog.Controllers
                 return RedirectToAction("Index");
             }
 
-            int actualHourVal = getCurrentHour();
-            int actualMinuteVal = getCurrentMinute();
+            int actualHourVal = GetCurrentHour();
+            int actualMinuteVal = GetCurrentMinute();
 
             List<string> listOfHours = new List<string>();
             List<string> listOfStartHour = new List<string>();
@@ -181,17 +181,17 @@ namespace ProiectPentalog.Controllers
 
             if (reservation.ReservationDate.Date == System.DateTime.Now.Date)
             {
-                listOfHours = getListOfHours(actualHourVal, actualMinuteVal);
+                listOfHours = GetListOfHours(actualHourVal, actualMinuteVal);
             }
             else
             {
-                listOfHours = getListOfHours(0, 59);
+                listOfHours = GetListOfHours(0, 59);
             }
 
             listOfStartHour = listOfHours;
             listOfStartHour.Clear();
-            listOfStartHour = getListOfHours(0, 0);
-            listOfEndHour = getListOfHours(0, 0);
+            listOfStartHour = GetListOfHours(0, 0);
+            listOfEndHour = GetListOfHours(0, 0);
 
             ViewBag.ListOfStartHours = new SelectList(listOfStartHour);
             ViewBag.ListOfEndHours = new SelectList(listOfEndHour);
@@ -268,35 +268,35 @@ namespace ProiectPentalog.Controllers
             base.Dispose(disposing);
         }
 
-        private int getCurrentHour()
+        private int GetCurrentHour()
         {
-            String currentHour = System.DateTime.Now.Hour.ToString();
+            string currentHour = System.DateTime.Now.Hour.ToString();
             return Int32.Parse(currentHour);
         }
 
-        private int getHour(String dateTime)
+        private int GetCurrentMinute()
+        {
+            string currentMinute = System.DateTime.Now.Minute.ToString();
+            return Int32.Parse(currentMinute);
+        }
+
+        private int GetHour(string dateTime)
         {
             return Int32.Parse(dateTime.Substring(0, 2));
         }
 
-        private int getMinute(String dateTime)
+        private int GetMinute(string dateTime)
         {
             return Int32.Parse(dateTime.Substring(3, 2));
         }
 
-        private int getCurrentMinute()
+        private List<string> GetListOfHours(int startHourList, int startMinuteList)
         {
-            String currentMinute = System.DateTime.Now.Minute.ToString();
-            return Int32.Parse(currentMinute);
-        }
-
-        private List<String> getListOfHours(int startHourList, int startMinuteList)
-        {
-            List<String> listOfHours = new List<string>();
+            List<string> listOfHours = new List<string>();
 
             StringBuilder builder = new StringBuilder();
 
-            for (int index_hour = startHourList; index_hour < 24; index_hour++) //TO DO HERE
+            for (int index_hour = 0; index_hour <= 24; index_hour++) //TO DO HERE
             {
                 if (index_hour == startHourList && startMinuteList < 30)
                 {
@@ -340,15 +340,25 @@ namespace ProiectPentalog.Controllers
                     }
                     else
                     {
-                        builder.Append(index_hour);
-                        builder.Append(":00");
-                        listOfHours.Add(builder.ToString());
-                        builder.Clear();
+                        if (index_hour != 24)
+                        {
+                            builder.Append(index_hour);
+                            builder.Append(":00");
+                            listOfHours.Add(builder.ToString());
+                            builder.Clear();
 
-                        builder.Append(index_hour);
-                        builder.Append(":30");
-                        listOfHours.Add(builder.ToString());
-                        builder.Clear();
+                            builder.Append(index_hour);
+                            builder.Append(":30");
+                            listOfHours.Add(builder.ToString());
+                            builder.Clear();
+                        }
+                        else
+                        {
+                            builder.Append(index_hour);
+                            builder.Append(":00");
+                            listOfHours.Add(builder.ToString());
+                            builder.Clear();
+                        }
                     }
                 }
             }
