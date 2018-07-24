@@ -298,41 +298,31 @@ namespace ProiectPentalog.Controllers
 
             for (int index_hour = 0; index_hour <= 24; index_hour++) //TO DO HERE
             {
-                if (index_hour == startHourList && startMinuteList < 30)
-                {
-                    if (index_hour < 10)
-                    {
-                        builder.Append("0");
-                        builder.Append(index_hour);
-                        builder.Append(":30");
-                        listOfHours.Add(builder.ToString());
-                        builder.Clear();
-                    }
-                    else
-                    {
-                        builder.Append(index_hour);
-                        builder.Append(":30");
-                        listOfHours.Add(builder.ToString());
-                        builder.Clear();
-                    }
-                }
 
-                if (index_hour == startHourList && startMinuteList >= 30)
+                if (index_hour < 10)
                 {
-                    // To Do Here
-                }
+                    builder.Append("0");
+                    builder.Append(index_hour);
+                    builder.Append(":00");
+                    listOfHours.Add(builder.ToString());
+                    builder.Clear();
 
-                if (index_hour != startHourList)
+                    builder.Append("0");
+                    builder.Append(index_hour);
+                    builder.Append(":30");
+                    listOfHours.Add(builder.ToString());
+                    builder.Clear();
+                }
+                else
                 {
-                    if (index_hour < 10)
+
+                    if (index_hour < 24)
                     {
-                        builder.Append("0");
                         builder.Append(index_hour);
                         builder.Append(":00");
                         listOfHours.Add(builder.ToString());
                         builder.Clear();
 
-                        builder.Append("0");
                         builder.Append(index_hour);
                         builder.Append(":30");
                         listOfHours.Add(builder.ToString());
@@ -340,25 +330,10 @@ namespace ProiectPentalog.Controllers
                     }
                     else
                     {
-                        if (index_hour != 24)
-                        {
-                            builder.Append(index_hour);
-                            builder.Append(":00");
-                            listOfHours.Add(builder.ToString());
-                            builder.Clear();
-
-                            builder.Append(index_hour);
-                            builder.Append(":30");
-                            listOfHours.Add(builder.ToString());
-                            builder.Clear();
-                        }
-                        else
-                        {
-                            builder.Append(index_hour);
-                            builder.Append(":00");
-                            listOfHours.Add(builder.ToString());
-                            builder.Clear();
-                        }
+                        builder.Append(index_hour);
+                        builder.Append(":00");
+                        listOfHours.Add(builder.ToString());
+                        builder.Clear();
                     }
                 }
             }
