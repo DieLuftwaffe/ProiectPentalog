@@ -55,7 +55,7 @@ namespace ProiectPentalog.Controllers
                 {
                     if (r.Name == room.Name)
                     {
-                        ModelState.AddModelError("Name", "Sala exista !");
+                        ModelState.AddModelError("Name", "Room already exists !");
                         return View(room);
                     }
                 }
