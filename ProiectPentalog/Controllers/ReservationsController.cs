@@ -128,7 +128,7 @@ namespace ProiectPentalog.Controllers
 
             if (reservation.ReservationDate == currentDateTime)
             {
-                if (GetHour(reservation.StartHour).CompareTo(currentDateTime.Hour) == 1)
+                if (GetHour(reservation.StartHour).CompareTo(currentDateTime.Hour) == -1)
                 {
                     ModelState.AddModelError("StartHour", "Wrong Hours!");
                 }
