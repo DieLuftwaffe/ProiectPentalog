@@ -51,6 +51,8 @@ namespace ProiectPentalog.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+
                 db.Rooms.Add(room);
                 db.SaveChanges();
                 return RedirectToAction("Index");
