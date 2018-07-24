@@ -22,7 +22,6 @@ namespace ProiectPentalog.Controllers
 		public ActionResult Index(int? id)
 		{
 			if (id == null)
-
 			{
 				var reservations = db.Reservations.Include(r => r.Room);
 
@@ -31,12 +30,9 @@ namespace ProiectPentalog.Controllers
 			else
 			{
 				var reservations = db.Reservations.Include(r => r.Room).Where(i => i.RoomId == id);
-
+                ViewBag.SelectedRoom = db.Rooms.SingleOrDefault(r => r.Id == id);
 				return View(reservations.ToList());
-
 			}
-
-
 		}
 
         // GET: Reservations/Details/5
