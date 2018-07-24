@@ -51,6 +51,14 @@ namespace ProiectPentalog.Controllers
         {
             if (ModelState.IsValid)
             {
+                foreach (Room r in db.Rooms)
+                {
+                    if (r.Name == room.Name)
+                    {
+                        ModelState.AddModelError("Name", "Sala exista !");
+                        return View(room);
+                    }
+                }
                 db.Rooms.Add(room);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -116,21 +124,7 @@ namespace ProiectPentalog.Controllers
             return RedirectToAction("Index");
         }
 
-		// POST: Rooms/Reservations/5
-
-		public ActionResult RoomReservations(int? id)
-		{
-			if (id == null)
-			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			var reservations = db.Reservations.Include(r => r.Room).Where(i => i.RoomId == id);
-
-			return View(reservations.ToList());
-		}
-
-
-		protected override void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
