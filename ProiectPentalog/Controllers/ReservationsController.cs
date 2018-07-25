@@ -187,25 +187,10 @@ namespace ProiectPentalog.Controllers
 
             listOfHours = GetListOfHours();
 
-
-            //if (reservation.ReservationDate.Date == System.DateTime.Now.Date)
-            //{
-            //    listOfHours = GetListOfHours(actualHourVal, actualMinuteVal);
-            //}
-            //else
-            //{
-            //    listOfHours = GetListOfHours(0, 59);
-            //}
-
-            //listOfStartHour = listOfHours;
-            //listOfStartHour.Clear();
-            //listOfStartHour = GetListOfHours(0, 0);
-            //listOfEndHour = GetListOfHours(0, 0);
-
             ViewBag.ListOfStartHours = new SelectList(listOfHours);
             ViewBag.ListOfEndHours = new SelectList(listOfHours);
 
-            ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name", reservation.RoomId);
+            //ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name", reservation.RoomId);
             return View(reservation);
         }
 
