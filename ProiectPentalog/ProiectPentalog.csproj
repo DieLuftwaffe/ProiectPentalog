@@ -178,6 +178,10 @@
     <Compile Include="Migrations\201807241121305_Adugare3.Designer.cs">
       <DependentUpon>201807241121305_Adugare3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807251033288_Dotari.cs" />
+    <Compile Include="Migrations\201807251033288_Dotari.Designer.cs">
+      <DependentUpon>201807251033288_Dotari.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CreateReservationsVM.cs" />
@@ -331,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807241121305_Adugare3.resx">
       <DependentUpon>201807241121305_Adugare3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807251033288_Dotari.resx">
+      <DependentUpon>201807251033288_Dotari.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
