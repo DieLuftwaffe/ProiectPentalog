@@ -171,7 +171,7 @@ namespace ProiectPentalog.Controllers
                 {
                     Id = reservation.Id,
                     Name = reservation.Name,
-
+					Subject=reservation.Subject,
                     RoomId = reservation.RoomId,
                 };
 
