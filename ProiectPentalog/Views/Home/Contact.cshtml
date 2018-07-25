@@ -1,69 +1,131 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h3>
-    Practică 2018
-</h3>
 
+<!-- container -->
+<div class="container">
 
-<div class="row">
-    <div class="col-md-2">
-        <h2>
-            Poză
-        </h2>
-    </div>
-
-
-    <div class="col-md-10">
-        <h2>
-            Descriere
-        </h2>
-
-    </div>
+    <ol class="breadcrumb">
+        @Html.ActionLink("Home", "Index", "Home")  |
+        @Html.ActionLink("About", "About", "Home")
+    </ol>
 
     <div class="row">
         <div class="col-md-2">
-
-
-            <img src="~/image/AlexPopa.jpg" height="150" width="150" style="border:5px solid brown" />
+            <h2>
+                Poză
+            </h2>
         </div>
 
-        <div class="col-md-10">Alex Popa.Îi place pizza,artele marțiale și să facă mișcare.</div>
 
-    </div>
+        <div class="col-md-10">
+            <h2>
+                Adresa
+            </h2>
 
-    <div class="row">
-        <div class="col-md-2">
-            <img src="~/image/AlexVaja.jpg" height="150" width="150" style="border:5px solid yellow" />
         </div>
 
-        <div class="col-md-10">Alex Vaja.Merge mult pe jos,scrie coduri și face drumeții montane.</div>
+        <div class="row">
+            <div class="col-md-2">
 
-    </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <img src="~/image/ElenaDobre.jpg" height="150" width="150" style="border:5px solid green" />
+                <img src="~/image/AlexPopa.jpg" height="150" width="150" style="border:5px solid brown" />
+            </div>
+
+            <div class="col-md-10">Alex Popa.Îi place pizza,artele marțiale și să facă mișcare.</div>
+
         </div>
 
-        <div class="col-md-10">Elena Dobre.Aleargă,desenează,ascultă metall și îi plac pisicile.</div>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="~/image/AlexVaja.jpg" height="150" width="150" style="border:5px solid yellow" />
+            </div>
 
-    </div>
+            <div class="col-md-10">Alex Vaja.Merge mult pe jos,scrie coduri și face drumeții montane.</div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <img src="~/image/LaurențiuPopoacă.jpg" height="150" width="150" style="border:5px solid pink" />
         </div>
 
-        <div class="col-md-10">Laurențiu Popoacă.Îi place să conducă,e fan STARWARS și ascultă electro.</div>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="~/image/ElenaDobre.jpg" height="150" width="150" style="border:5px solid green" />
+            </div>
 
-    </div>
+            <div class="col-md-10">Elena Dobre.Aleargă,desenează,ascultă metall și îi plac pisicile.</div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <img src="~/image/LucianBolboros.jpg" height="150" width="150" style="border:5px solid black" />
         </div>
 
-        <div class="col-md-10">Lucian Bolboros.Ski,munți,cățărare,speologie,caiac,bicicletă,etc.</div>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="~/image/LaurențiuPopoacă.jpg" height="150" width="150" style="border:5px solid black" />
+            </div>
+
+            <div class="col-md-10">Laurențiu Popoacă.Îi place să conducă,e fan STARWARS și ascultă electro.</div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <img src="~/image/LucianBolboros.jpg" height="150" width="150" style="border:5px solid black" />
+            </div>
+
+            <div class="col-md-10">Lucian Bolboros.Ski,munți,cățărare,speologie,caiac,bicicletă,etc.</div>
+
+        </div>
 
     </div>
+</div>	<!-- /container -->
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1915.6970630614078!2d25.617999793871164!3d45.65904459353664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b35b87aa7c313f%3A0xa973697c6e21e582!2sPentalog+Rom%C3%A2nia!5e0!3m2!1sro!2sro!4v1532511720012" width="1140" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+<!--Footer-->
+<footer id="footer" class="top-space">
+    <div class="footer1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 widget">
+                    <h3 class="widget-title">Contact</h3>
+                    <div class="widget-body">
+                        <p>
+                            0758172944<br>
+                            <a href="mailto:#">laurentiu_www2009@yahoo.com</a><br>
+                            <br>
+                            Adresa de contact.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3 widget">
+                    <h3 class="widget-title">Follow me</h3>
+                    <div class="widget-body">
+                        <p class="follow-me-icons">
+                            <a href="https://github.com/DieLuftwaffe/ProiectPentalog"><i class="fa fa-github fa-2"></i></a>
+                            <a href="https://www.facebook.com/"><i class="fa fa-facebook fa-2"></i></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 widget">
+                    <h3 class="widget-title">Text widget</h3>
+                    <div class="widget-body">
+                        <p>Text...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 widget">
+                    <div class="widget-body">
+                        <p class="simplenav">
+                            @Html.ActionLink("Home", "Index", "Home") |
+                            @Html.ActionLink("About", "About", "Home") |
+                            @Html.ActionLink("Contact", "Contact", "Home")
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- /Footer -->
