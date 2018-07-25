@@ -7,12 +7,12 @@ namespace ProiectPentalog.Migrations
     {
         public override void Up()
         {
-            AlterColumn("dbo.Reservations", "Subject", c => c.String(maxLength: 50));
+            AddColumn("dbo.Reservations", "Subject", c => c.String(maxLength: 50));
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.Reservations", "Subject", c => c.String(maxLength: 20));
+            DropColumn("dbo.Reservations", "Subject");
         }
     }
 }
