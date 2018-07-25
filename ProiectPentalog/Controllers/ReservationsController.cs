@@ -196,7 +196,7 @@ namespace ProiectPentalog.Controllers
             ViewBag.ListOfStartHours = new SelectList(listOfHours);
             ViewBag.ListOfEndHours = new SelectList(listOfHours);
 
-            //ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name", reservation.RoomId);
+            ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name", reservation.RoomId);
             return View(reservation);
         }
 
