@@ -83,7 +83,7 @@ namespace ProiectPentalog.Controllers
             listOfStartHour = getListOfHours(0, 0);
             listOfEndHour = getListOfHours(0, 0);
 
-            ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name");
+            ViewBag.RoomId = new SelectList(db.Rooms, "Id", "Name","Subject");
             ViewBag.ListOfStartHours = new SelectList(listOfStartHour);
             ViewBag.ListOfEndHours = new SelectList(listOfEndHour);
             
@@ -118,7 +118,12 @@ namespace ProiectPentalog.Controllers
                 ModelState.AddModelError("Name", "Enter name!");
             }
 
-            if (reservation.RoomId <= 0)
+			if (reservation.Name == null)
+			{
+				ModelState.AddModelError("Subject", "Enter subject name!");
+			}
+
+			if (reservation.RoomId <= 0)
             {
                 ModelState.AddModelError("RoomId", "Select room name!");
             }
@@ -164,6 +169,7 @@ namespace ProiectPentalog.Controllers
                 {
                     Id = reservation.Id,
                     Name = reservation.Name,
+
                     RoomId = reservation.RoomId,
                 };
 
@@ -225,7 +231,7 @@ namespace ProiectPentalog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,StartDate,EndDate,RoomId")] Reservation reservation)
+        public ActionResult Edit([Bind(Include = "Id,Name,Subject,StartDate,EndDate,RoomId")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
