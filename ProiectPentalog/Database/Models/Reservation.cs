@@ -7,17 +7,19 @@ using System.Web;
 
 namespace ProiectPentalog.Database.Models
 {
-    public class Reservation
-    {
-        [Key]
-        public int Id { get; set; }
-        [MaxLength(20)]
-        public string Name { get; set; }
+	public class Reservation
+	{
+		[Key]
+		public int Id { get; set; }
+		[MaxLength(20)]
+		public string Name { get; set; }
+		[MaxLength(50)]
+		public string Subject { get; set; }
 
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
-
+		 
         [ForeignKey(nameof(Room))]
         public int RoomId { get; set; }
         

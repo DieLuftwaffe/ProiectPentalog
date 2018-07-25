@@ -22,5 +22,7 @@ namespace ProiectPentalog.ViewModel
         public String StartHour { get; set; }
 
         public String EndHour { get; set; }
+
+		public String Subject { get; set; }
     }
 }
