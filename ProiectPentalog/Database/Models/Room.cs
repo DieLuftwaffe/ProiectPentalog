@@ -17,5 +17,8 @@ namespace ProiectPentalog.Database.Models
 		public int Capacity { get; set; }
 
         public virtual List<Reservation> Reservations { get; set; }
+
+        public string Dotari { get; set; }
+
     }
 }
