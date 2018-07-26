@@ -292,48 +292,10 @@ namespace ProiectPentalog.Controllers
         {
             List<string> listOfHours = new List<string>();
 
-            StringBuilder builder = new StringBuilder();
-
-            for (int index_hour = 0; index_hour <= 24; index_hour++) //TO DO HERE
+            for (int index_hour = 0; index_hour < 24; index_hour++)
             {
-
-                if (index_hour < 10)
-                {
-                    builder.Append("0");
-                    builder.Append(index_hour);
-                    builder.Append(":00");
-                    listOfHours.Add(builder.ToString());
-                    builder.Clear();
-
-                    builder.Append("0");
-                    builder.Append(index_hour);
-                    builder.Append(":30");
-                    listOfHours.Add(builder.ToString());
-                    builder.Clear();
-                }
-                else
-                {
-
-                    if (index_hour < 24)
-                    {
-                        builder.Append(index_hour);
-                        builder.Append(":00");
-                        listOfHours.Add(builder.ToString());
-                        builder.Clear();
-
-                        builder.Append(index_hour);
-                        builder.Append(":30");
-                        listOfHours.Add(builder.ToString());
-                        builder.Clear();
-                    }
-                    else
-                    {
-                        builder.Append(index_hour);
-                        builder.Append(":00");
-                        listOfHours.Add(builder.ToString());
-                        builder.Clear();
-                    }
-                }
+                listOfHours.Add(String.Format("{0:00}:00", index_hour));
+                listOfHours.Add(String.Format("{0:00}:30", index_hour));
             }
 
             return listOfHours;
