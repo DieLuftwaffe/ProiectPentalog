@@ -1,131 +1,86 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-
-<!-- container -->
-<div class="container">
-
-    <ol class="breadcrumb">
-        @Html.ActionLink("Home", "Index", "Home")  |
-        @Html.ActionLink("About", "About", "Home")
-    </ol>
-
-    <div class="row">
-        <div class="col-md-2">
-            <h2>
-                Poză
-            </h2>
+﻿<!-- Team -->
+<div class="bg-color-sky-light">
+    <div class="content-lg container">
+        <div class="row margin-b-40">
+            <div class="col-sm-6">
+                <header class="page-header">
+                    <h1 class="page-title">Meet the team</h1>
+                </header>
+            </div>
         </div>
-
-
-        <div class="col-md-10">
-            <h2>
-                Adresa
-            </h2>
-
-        </div>
+        <!--// end row -->
 
         <div class="row">
-            <div class="col-md-2">
+            <!-- Team -->
+            <div class="col-sm-4 sm-margin-b-50">
+                <div class="bg-color-white margin-b-20">
+                    <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+                        <img class="img-responsive" src="~/image/AlexPopa.jpg" style="border:5px ridge black">
+                    </div>
+                </div>
+                <h4><font color="FireBrick ">Alex Popa</font> <span class="text-uppercase margin-l-20">Programmer</span></h4>
+                <p>***Adresa aici***</p>
 
-
-                <img src="~/image/AlexPopa.jpg" height="150" width="150" style="border:5px solid brown" />
             </div>
+            <!-- End Team -->
+            <!-- Team -->
+            <div class="col-sm-4 sm-margin-b-50">
+                <div class="bg-color-white margin-b-20">
+                    <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+                        <img class="img-responsive" src="~/image/AlexVaja.jpg" style="border:5px ridge FireBrick ">
+                    </div>
+                </div>
+                <h4><font color="Black">Alex Vaja</font> <span class="text-uppercase margin-l-20">Lead Developer</span></h4>
+                <p>***Adresa aici***</p>
 
-            <div class="col-md-10">Alex Popa.Îi place pizza,artele marțiale și să facă mișcare.</div>
+            </div>
+            <!-- End Team -->
+            <!-- Team -->
+            <div class="col-sm-4 sm-margin-b-50">
+                <div class="bg-color-white margin-b-20">
+                    <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+                        <img class="img-responsive" src="~/image/ElenaDobre.jpg" style="border:5px ridge black">
+                    </div>
+                </div>
+                <h4><font color="FireBrick ">Elena Dobre</font> <span class="text-uppercase margin-l-20">Programmer</span></h4>
+                <p>Brașov, Street Padina nr.</p>
+                <p>07</p>
+
+            </div>
+            <!-- End Team -->
+            <!-- Team -->
+            <div class="col-sm-4 sm-margin-b-50">
+                <div class="bg-color-white margin-b-20">
+                    <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+                        <img class="img-responsive" src="~/image/Laurențiu.jpg" style="border:5px ridge FireBrick ">
+                    </div>
+                </div>
+                <h4><font color="Black">Popoaca Laurentiu</font> <span class="text-uppercase margin-l-20">Designer</span></h4>
+                <p>Brăila, Street Mircea Vodă nr. 3</p>
+                <p>Phone Number: 0758 172 944</p>
+
+            </div>
+            <!-- End Team -->
+            <!-- Team -->
+            <div class="col-sm-4 sm-margin-b-50">
+                <div class="bg-color-white margin-b-20">
+                    <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s">
+                        <img class="img-responsive" src="~/image/LucianBolboros.jpg" style="border:5px ridge black">
+                    </div>
+                </div>
+                <h4><font color="FireBrick">Lucian Bolboros</font> <span class="text-uppercase margin-l-20">Project Manager</span></h4>
+                <p>***Adresa aici***</p>
+
+            </div>
+            <!-- End Team -->
 
         </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                <img src="~/image/AlexVaja.jpg" height="150" width="150" style="border:5px solid yellow" />
-            </div>
-
-            <div class="col-md-10">Alex Vaja.Merge mult pe jos,scrie coduri și face drumeții montane.</div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                <img src="~/image/ElenaDobre.jpg" height="150" width="150" style="border:5px solid green" />
-            </div>
-
-            <div class="col-md-10">Elena Dobre.Aleargă,desenează,ascultă metall și îi plac pisicile.</div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                <img src="~/image/LaurențiuPopoacă.jpg" height="150" width="150" style="border:5px solid black" />
-            </div>
-
-            <div class="col-md-10">Laurențiu Popoacă.Îi place să conducă,e fan STARWARS și ascultă electro.</div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                <img src="~/image/LucianBolboros.jpg" height="150" width="150" style="border:5px solid black" />
-            </div>
-
-            <div class="col-md-10">Lucian Bolboros.Ski,munți,cățărare,speologie,caiac,bicicletă,etc.</div>
-
-        </div>
-
+        <!--// end row -->
     </div>
-</div>	<!-- /container -->
+</div>
+<!-- End Team -->
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1915.6970630614078!2d25.617999793871164!3d45.65904459353664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b35b87aa7c313f%3A0xa973697c6e21e582!2sPentalog+Rom%C3%A2nia!5e0!3m2!1sro!2sro!4v1532511720012" width="1140" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-<!--Footer-->
-<footer id="footer" class="top-space">
-    <div class="footer1">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 widget">
-                    <h3 class="widget-title">Contact</h3>
-                    <div class="widget-body">
-                        <p>
-                            0758172944<br>
-                            <a href="mailto:#">laurentiu_www2009@yahoo.com</a><br>
-                            <br>
-                            Adresa de contact.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3 widget">
-                    <h3 class="widget-title">Follow me</h3>
-                    <div class="widget-body">
-                        <p class="follow-me-icons">
-                            <a href="https://github.com/DieLuftwaffe/ProiectPentalog"><i class="fa fa-github fa-2"></i></a>
-                            <a href="https://www.facebook.com/"><i class="fa fa-facebook fa-2"></i></a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 widget">
-                    <h3 class="widget-title">Text widget</h3>
-                    <div class="widget-body">
-                        <p>Text...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer2">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 widget">
-                    <div class="widget-body">
-                        <p class="simplenav">
-                            @Html.ActionLink("Home", "Index", "Home") |
-                            @Html.ActionLink("About", "About", "Home") |
-                            @Html.ActionLink("Contact", "Contact", "Home")
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- /Footer -->
+    <section class="container-full top-space">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1915.6970630614078!2d25.617999793871164!3d45.65904459353664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b35b87aa7c313f%3A0xa973697c6e21e582!2sPentalog+Rom%C3%A2nia!5e0!3m2!1sro!2sro!4v1532511720012" width="1800" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </section>
+    

@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
-    
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="shortcut icon" href="~/Content/images/3333.jpg">
+    <link rel="stylesheet" href="~/Content/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+    <title>@ViewBag.Title - PentaSchedule</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -20,7 +23,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Organizarea sălilor", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand"><img src="~/Content/images/logosite.png"></a>
+
             </div>
             <div class="navbar-collapse collapse pull-right">
                 <ul class="nav navbar-nav">
@@ -37,16 +41,81 @@
     <div id="head" class="secondary"></div>
     <div class="body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Organizarea sălilor</p>
-        </footer>
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/rest")
     @RenderSection("scripts", required: false)
+
+    <!--Footer-->
+    <footer id="footer" class="top-space">
+        <div class="footer1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title">Contact</h3>
+                        <div class="widget-body">
+                            <p>
+                                0758172944<br>
+                                <a href="mailto:#">laurentiu_www2009@yahoo.com</a><br>
+                                <br>
+                                Clădirea Nine, etaj 2, Bulevardul Gării 13A, Brașov 500227
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title">Follow me</h3>
+                        <div class="widget-body">
+                            <p class="follow-me-icons">
+                                <a href="https://github.com/DieLuftwaffe/ProiectPentalog"><i class="fa fa-github fa-2"></i></a>
+                                <a href="https://www.facebook.com/pages/Pentalog-Brasov/195239130572476"><i class="fa fa-facebook fa-2"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 widget">
+                        <h3 class="widget-title">
+                            80%
+                            ███████▒▒▒
+                        </h3>
+                        <div class="widget-body">
+                            <p>The application is still in development, thanks for using it!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 widget">
+                        <div class="widget-body">
+                            <p class="simplenav">
+                                @Html.ActionLink("Home", "Index", "Home") |
+                                @Html.ActionLink("Rooms", "Index", "Rooms") |
+                                @Html.ActionLink("Reservation", "Index", "Reservations") |
+                                @Html.ActionLink("About", "About", "Home") |
+                                @Html.ActionLink("Contact", "Contact", "Home") 
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 widget">
+                        <div class="widget-body">
+                            <p class="text-right">
+                                &copy; @DateTime.Now.Year - PentaSchedule
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /Footer -->
+
 </body>
 </html>
 

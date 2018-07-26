@@ -30,7 +30,9 @@ namespace ProiectPentalog
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css")
-                .Include("~/Content/css/bootstrap-theme.css", "~/Content/css/bootstrap.min.css", "~/Content/css/font-awesome.min.css", "~/Content/css/main.css"));
+                .Include("~/Content/css/bootstrap-theme.css", "~/Content/css/bootstrap.min.css", "~/Content/css/font-awesome.min.css", "~/Content/css/main.css", "~/Content/css/ionicons.min.css", "~/Content/css/style.css"));
+               
+
         }
     }
 }
