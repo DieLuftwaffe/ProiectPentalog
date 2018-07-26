@@ -8,7 +8,6 @@
 
 <h2>Create</h2>
 
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -34,7 +33,6 @@
 		</div>
 	</div>
 
-
 	<div class="form-group">
 		@Html.LabelFor(model => model.RoomId, "Room Name", htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
@@ -42,7 +40,6 @@
 			@Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
 		</div>
 	</div>
-
 
 	<div class="form-group">
 		@Html.LabelFor(model => model.ReservationDate, "Reservation Date", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -58,7 +55,7 @@
 			@Html.DropDownList("StartHour", startHours, "-- Select --", htmlAttributes: new { @class = "form-control" })
 			@Html.ValidationMessageFor(model => model.StartHour, "", new { @class = "text-danger" })
 		</div>
-	</div> @*TO DO HERE*@
+	</div>
 
 	<div class="form-group">
 		@Html.LabelFor(model => model.EndHour, "End Hour", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -66,7 +63,7 @@
 			@Html.DropDownList("EndHour", endHours, "-- Select --", htmlAttributes: new { @class = "form-control" })
 			@Html.ValidationMessageFor(model => model.EndHour, "", new { @class = "text-danger" })
 		</div>
-	</div> @*TO DO HERE*@
+	</div> 
 
 	<div class="form-group">
 		<div class="col-md-offset-2 col-md-10">
