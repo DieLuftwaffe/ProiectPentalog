@@ -54,6 +54,12 @@ namespace ProiectPentalog.Controllers
                 room.BrandImage = new byte[image1.ContentLength];
                 image1.InputStream.Read(room.BrandImage, 0, image1.ContentLength);
             }
+
+            if (room.BrandImage == null)
+            {
+                ModelState.AddModelError("", "Please upload an image !");
+            }
+
             if (ModelState.IsValid)
             {
                 foreach (Room r in db.Rooms)
