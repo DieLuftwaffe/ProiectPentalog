@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201807251033288_Dotari.Designer.cs">
       <DependentUpon>201807251033288_Dotari.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807261209359_addImage.cs" />
+    <Compile Include="Migrations\201807261209359_addImage.Designer.cs">
+      <DependentUpon>201807261209359_addImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CreateReservationsVM.cs" />
@@ -341,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807251033288_Dotari.resx">
       <DependentUpon>201807251033288_Dotari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807261209359_addImage.resx">
+      <DependentUpon>201807261209359_addImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

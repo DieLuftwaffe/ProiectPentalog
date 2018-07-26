@@ -19,5 +19,9 @@ namespace ProiectPentalog.Database.Models
         public virtual List<Reservation> Reservations { get; set; }
 
         public string Dotari { get; set; }
+
+        //public int BrandId { get; set; }
+
+        public byte[] BrandImage { get; set; }
     }
 }

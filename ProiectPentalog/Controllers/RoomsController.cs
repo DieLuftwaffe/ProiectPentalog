@@ -47,8 +47,13 @@ namespace ProiectPentalog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Capacity,Dotari")] Room room)
+        public ActionResult Create(Room room, HttpPostedFileBase image1)
         {
+            if (image1 != null)
+            {
+                room.BrandImage = new byte[image1.ContentLength];
+                image1.InputStream.Read(room.BrandImage, 0, image1.ContentLength);
+            }
             if (ModelState.IsValid)
             {
                 foreach (Room r in db.Rooms)
