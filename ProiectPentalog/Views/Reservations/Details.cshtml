@@ -11,7 +11,7 @@
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Room.Name)
+                @Html.DisplayNameFor(model => model.Room)
             </dt>
 
             <dd>
@@ -30,9 +30,9 @@
                 @Html.DisplayNameFor(model => model.Subject)
             </dt>
 
-            <dt>
+            <dd>
                 @Html.DisplayFor(model => model.Subject)
-            </dt>
+            </dd>
 
             <dt>
                 @Html.DisplayNameFor(model => model.StartDate)
@@ -52,8 +52,9 @@
 
         </dl>
     </div>
+    <br />
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back", "Index")
     </p>
     </div>

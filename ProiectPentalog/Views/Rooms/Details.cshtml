@@ -26,10 +26,18 @@
                 @Html.DisplayFor(model => model.Capacity)
             </dd>
 
+            <dt>
+                @Html.DisplayNameFor(model => model.Dotari)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Dotari)
+            </dd>
+
         </dl>
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back", "Index")
     </p>
     </div>

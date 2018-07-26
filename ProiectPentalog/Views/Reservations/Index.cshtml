@@ -6,11 +6,11 @@
 <div class="container">
     @if (ViewBag.SelectedRoom != null)
     {
-        <h2>Index for: @ViewBag.SelectedRoom.Name</h2>
+        <h2>Reservations for: @ViewBag.SelectedRoom.Name</h2>
     }
     else
     {
-        <h2>Index</h2>
+        <h2>Reservations</h2>
     }
     <p>
         @Html.ActionLink("Create New", "Create")
@@ -26,10 +26,6 @@
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.Subject)
-            </th>
-
-            <th>
                 @Html.DisplayNameFor(model => model.StartDate)
             </th>
 
@@ -41,9 +37,9 @@
         </tr>
 
 	@foreach (var item in Model)
-	{
-		if (item.EndDate >= System.DateTime.Now)
-		{
+    {
+        if (item.EndDate >= System.DateTime.Now)
+        {
 			<tr>
 				<td>
 					@Html.DisplayFor(modelItem => item.Room.Name)
@@ -51,10 +47,6 @@
 
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Subject)
                 </td>
 
                 <td>
@@ -70,6 +62,6 @@
                 </td>
             </tr>
         }
-
+    }
     </table>
-    </div>
+</div>

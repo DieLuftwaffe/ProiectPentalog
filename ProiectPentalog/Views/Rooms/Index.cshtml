@@ -5,7 +5,7 @@
 }
 
 <div class="container">
-    <h2>Index</h2>
+    <h2>Schedule for: </h2>
 
 <p>
 	@Html.ActionLink("Create New", "Create")
@@ -17,9 +17,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Capacity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Dotari)
         </th>
         <th>
             @Html.Label("Is Available")
@@ -45,9 +42,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Capacity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dotari)
         </td>
         <td>
             @Html.Label("roomFree", roomFree ? "Yes" : "No" , new { @style = "font-weight :normal;"})

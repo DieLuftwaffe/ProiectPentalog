@@ -6,14 +6,13 @@
     SelectList endHours = ViewBag.ListOfEndHours;
 }
 <div class="container">
-    <h2>Create</h2>
+    <h2>Create Reservation</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-	<h4>Reservation</h4>
 	<hr />
 	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -74,7 +73,7 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back", "Index")
     </div>
 
     @section Scripts {
