@@ -4,7 +4,8 @@
 	ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="container">
+    <h2>Index</h2>
 
 <p>
 	@Html.ActionLink("Create New", "Create")
@@ -25,18 +26,18 @@
         </th>
     </tr>
 
-	@foreach (var item in Model)
-	{
-		bool roomFree = true;
-		DateTime date = DateTime.Now;
+        @foreach (var item in Model)
+        {
+            bool roomFree = true;
+            DateTime date = DateTime.Now;
 
-		foreach (var rez in item.Reservations)
-		{
-			if (rez.StartDate <=date || date <= rez.EndDate)
-			{
-				roomFree = false;
-			}
-		}
+            foreach (var rez in item.Reservations)
+            {
+                if (rez.StartDate <= date || date <= rez.EndDate)
+                {
+                    roomFree = false;
+                }
+            }
 
     <tr>
         <td>
@@ -60,4 +61,5 @@
     </tr>
 	}
 
-</table>
+    </table>
+</div>
