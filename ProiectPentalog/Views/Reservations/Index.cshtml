@@ -41,11 +41,11 @@
         </tr>
 
 	@foreach (var item in Model)
-	{
+    {
 
-		if (item.EndDate >= System.DateTime.Now)
+        if (item.EndDate >= System.DateTime.Now)
 
-		{
+        {
 			<tr>
 				<td>
 					@Html.DisplayFor(modelItem => item.Room.Name)
@@ -72,6 +72,6 @@
                 </td>
             </tr>
         }
-
+    }
     </table>
     </div>

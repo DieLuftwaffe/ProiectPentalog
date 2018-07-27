@@ -31,7 +31,10 @@ namespace ProiectPentalog
 
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/css/bootstrap-theme.css", "~/Content/css/bootstrap.min.css", "~/Content/css/font-awesome.min.css", "~/Content/css/main.css", "~/Content/css/ionicons.min.css", "~/Content/css/style.css"));
-               
+
+            bundles.Add(new StyleBundle("~/Content/css2")
+               .Include("~/Content/css2/slick.css", "~/Content/css2/slick-theme.css", "~/Content/css2/animate.css", "~/Content/css2/iconfont.css", "~/Content/css2/font-awesome.min.css", "~/Content/css2/bootstrap.css", "~/Content/css2/magnific-popup.css", "~/Content/css2/bootsnav.css"));
+
 
         }
     }
